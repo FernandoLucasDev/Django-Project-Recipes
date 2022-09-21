@@ -18,11 +18,11 @@ from django.http import HttpResponse
 from django.urls import path
 
 
-def my_view():
-    return HttpResponse('Mensagem')
+def my_view(request):
+    return HttpResponse('<b>Mensagem</b>')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sobre', my_view)
+    path('', my_view),
 ]
