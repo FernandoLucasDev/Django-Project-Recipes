@@ -12,10 +12,6 @@ def home(request):
 
 
 def category(request, category_id):
-   # recipes = Recipe.objects.filter(category_id=category_id).order_by('-id')
-
-   # if not recipes:
-   #     raise Http404('Not Found :(')
     recipes = get_list_or_404(
         Recipe.objects.filter(
             category__id=category_id,
