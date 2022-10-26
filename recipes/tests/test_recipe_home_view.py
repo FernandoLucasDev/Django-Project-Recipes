@@ -1,5 +1,5 @@
 from unittest.mock import patch
-
+from unittest import skip
 from django.urls import resolve, reverse
 from recipes import views
 
@@ -7,6 +7,29 @@ from .teste_recipe_base import RecipeTestBase
 
 
 class RecipeHomeViewTest(RecipeTestBase):
+    @skip
+    def test_invalid_page_query_uses_page_one(self):
+        for i in range(8):
+            kwargs = {'slug': f'r{i}', 'author_data': {'username': f'u{i}'}}
+            self.make_recipe(**kwargs)
+
+        with patch('recipes.views.PER_PAGE', new=3):
+            response = self.client.get(reverse('recipes:home') + '?page=12A')
+            self.assertEqual(
+                response.context['recipes'].number,
+                1
+            )
+            response = self.client.get(reverse('recipes:home') + '?page=2')
+            self.assertEqual(
+                response.context['recipes'].number,
+                2
+            )
+            response = self.client.get(reverse('recipes:home') + '?page=3')
+            self.assertEqual(
+                response.context['recipes'].number,
+                3
+            )
+
     def test_recipe_home_view_function_is_correct(self):
         view = resolve(reverse('recipes:home'))
         self.assertIs(view.func, views.home)
