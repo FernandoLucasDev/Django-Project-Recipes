@@ -3,7 +3,7 @@ import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from utils.browser import make_chrome_browser
 
-from recipes.tests.teste_recipe_base import RecipeMixin
+from recipes.tests.test_recipe_base import RecipeMixin
 
 
 class RecipeBaseFunctionalTest(StaticLiveServerTestCase, RecipeMixin):

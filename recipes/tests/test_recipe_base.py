@@ -39,8 +39,10 @@ class RecipeMixin:
     ):
         if category_data is None:
             category_data = {}
+
         if author_data is None:
             author_data = {}
+
         return Recipe.objects.create(
             category=self.make_category(**category_data),
             author=self.make_author(**author_data),
@@ -59,7 +61,11 @@ class RecipeMixin:
     def make_recipe_in_batch(self, qtd=10):
         recipes = []
         for i in range(qtd):
-            kwargs = {'slug': f'r{i}', 'author_data': {'username': f'u{i}'}}
+            kwargs = {
+                'title': f'Recipe Title {i}',
+                'slug': f'r{i}',
+                'author_data': {'username': f'u{i}'}
+            }
             recipe = self.make_recipe(**kwargs)
             recipes.append(recipe)
         return recipes

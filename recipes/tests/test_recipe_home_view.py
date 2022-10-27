@@ -3,7 +3,7 @@ from unittest import skip
 from django.urls import resolve, reverse
 from recipes import views
 
-from .teste_recipe_base import RecipeTestBase
+from .test_recipe_base import RecipeTestBase
 
 
 class RecipeHomeViewTest(RecipeTestBase):
