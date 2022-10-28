@@ -6,5 +6,17 @@
                 <span class="main-logo-text">Recipes</span>
             </a>
         </h1>
+        {% if user.is_authenticated %}
+            <form action="{% url 'authors:logout' %}" method='POST' class="main-logo-logout">
+                {% csrf_token %}
+                <input type="hidden" name="username" value="{{ request.user.username }}">
+                <button type="submit" style="background: none; border: none;">
+                    <h4>
+                        <i class="fa-solid fa-power-off logout-logo-header"></i>
+                        <span class="logout-text">Logout | logged as {{ request.user.username }}</span>
+                    </h4>
+                </button>
+            </form>
+        {% endif %}
     </div>
 </header>
