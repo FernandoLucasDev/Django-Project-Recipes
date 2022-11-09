@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 from django.contrib.messages import constants
+from utils.enviroment import get_env_variable, parse_comma_sep_str_to_list
 
 if os.environ.get('DEBUG', None) is None:
     from dotenv import load_dotenv
@@ -33,7 +34,9 @@ SECRET_KEY = 'django-insecure-%%@2(a0*l1fvi6d!mcc^)t4(qoqq!bcvjkys&xqp%p&bfrshxw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # type: ignore
+ALLOWED_HOSTS = []
+
+CSRF_TRUSTED_ORIGINS = []  # type: ignore
 
 
 # Application definition

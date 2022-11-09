@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock title %} recipes</title>
 </head>
 <body>
+    {% include 'global/partials/menu.html' %}
     {% include 'global/partials/header.html'%}
 
     {% include 'global/partials/search.html'%}
@@ -19,8 +20,7 @@
 
     {% include 'global/partials/footer.html' %}
 
-    <script src="{% static 'global/js/scripts.js' %}"> </script>
 
 </body>
-
+<script src="{% static 'global/js/scripts.js' %}"></script>
 </html>
