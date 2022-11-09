@@ -35,5 +35,10 @@ urlpatterns = [
         'recipes/theory/',
         views.theory,
         name="theory"
-    )
+    ),
+    path(
+        'recipes/tags/<slug:slug>/',
+        views.RecipeListViewTag.as_view(),
+        name="tag"
+    ),
 ]
